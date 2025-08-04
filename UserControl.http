@@ -1,0 +1,28 @@
+@UserControl_HostAddress = https://localhost:7080
+
+GET {{UserControl_HostAddress}}/users
+###
+
+POST {{UserControl_HostAddress}}/users
+Content-Type: application/json
+{
+  "Email": "newuser@example.com",
+  "Name": "New User"
+}
+
+###
+@id=3
+PUT {{UserControl_HostAddress}}/users/{{id}}
+Content-Type: application/json
+{
+  "Email": "devil@hell.com",
+  "Name": "Devil"
+}
+###
+DELETE {{UserControl_HostAddress}}/users/{{id}}
+
+###
+
+
+
+
