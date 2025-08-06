@@ -25,6 +25,8 @@ app.UseCors("OpenPolicy");
 
 app.MapUserEndpoints();
 app.MapRoleEndpoints();
+app.MapAppPageEndpoints();
+app.MapPermissionEndpoints();
 
 app.UseDefaultFiles(); // Serve index.html from wwwroot
 app.UseStaticFiles();  // Serve Angular files

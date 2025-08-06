@@ -11,18 +11,98 @@ Content-Type: application/json
 }
 
 ###
-@id=3
-PUT {{UserControl_HostAddress}}/users/{{id}}
+@UserID=2
+PUT {{UserControl_HostAddress}}/users/{{UserID}}
 Content-Type: application/json
 {
   "Email": "devil@hell.com",
   "Name": "Devil"
 }
 ###
-DELETE {{UserControl_HostAddress}}/users/{{id}}
+DELETE {{UserControl_HostAddress}}/users/{{UserID}}
 
 ###
 
 
 
+GET {{UserControl_HostAddress}}/roles
+###
 
+POST {{UserControl_HostAddress}}/roles
+Content-Type: application/json
+{
+  "RoleName": "New Role"
+}
+###
+@RoleID=2 
+PUT {{UserControl_HostAddress}}/roles/{{RoleID}}
+Content-Type: application/json
+{
+  "RoleName": "New Role2"
+}
+###
+
+DELETE {{UserControl_HostAddress}}/roles/{{RoleID}}
+
+###
+
+
+
+GET {{UserControl_HostAddress}}/AppPages
+
+###
+
+POST {{UserControl_HostAddress}}/AppPages
+Content-Type: application/json
+{
+  "PageName": "New App Page",
+  "Path": "/new-app-page",
+  "AppName": "icon-new"
+}
+###
+@AppPageID=6
+PUT {{UserControl_HostAddress}}/AppPages/{{AppPageID}}
+Content-Type: application/json
+{
+  "PageName": "New App Page2",
+  "Path": "/new-app-page2",
+  "AppName": "icon-new2"
+}
+###
+
+DELETE {{UserControl_HostAddress}}/AppPages/{{AppPageID}}
+
+###
+
+
+
+GET {{UserControl_HostAddress}}/Permissions
+
+###
+
+POST {{UserControl_HostAddress}}/Permissions
+Content-type: application/json
+{
+  "PageId": 2,
+  "RoleId": 1,
+  "CanView": true,
+  "CanEdit": true,
+  "CanDelete": true
+}
+###
+
+@PermID=2
+PUT {{UserControl_HostAddress}}/Permissions/{{PermID}}
+Content-type: application/json
+{
+  "PageId": 2,
+  "RoleId": 1,
+  "CanView": true,
+  "CanEdit": false,
+  "CanDelete": false
+}
+###
+
+DELETE {{UserControl_HostAddress}}/Permissions/{{PermID}}
+
+###
