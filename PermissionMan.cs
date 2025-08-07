@@ -18,7 +18,7 @@ namespace UserControl
         public static void MapPermissionEndpoints(this IEndpointRouteBuilder app)
         {
             //GET all Permission
-            app.MapGet("/Permissions", async (IDbConnection conn) =>
+            app.MapGet("/permissions", async (IDbConnection conn) =>
             {
                 try
                 {
@@ -33,7 +33,7 @@ namespace UserControl
 
 
             // POST: create a new role
-            app.MapPost("/Permissions", async (Permission perm, IDbConnection db) =>
+            app.MapPost("/permissions", async (Permission perm, IDbConnection db) =>
             {
                 try
                 {
@@ -49,7 +49,7 @@ namespace UserControl
             });
 
             // PUT: update role name
-            app.MapPut("/Permissions/{id}", async (int id, Permission perm, IDbConnection db) =>
+            app.MapPut("/permissions/{id}", async (int id, Permission perm, IDbConnection db) =>
             {
                 try
                 {
@@ -72,7 +72,7 @@ namespace UserControl
             });
 
             // DELETE: remove role
-            app.MapDelete("/Permissions/{id}", async (int id, IDbConnection db) =>
+            app.MapDelete("/permissions/{id}", async (int id, IDbConnection db) =>
             {
                 try
                 {

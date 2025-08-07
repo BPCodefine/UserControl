@@ -17,7 +17,7 @@ namespace UserControl
         public static void MapAppPageEndpoints(this IEndpointRouteBuilder app)
         {
             //GET all AppPages
-            app.MapGet("/AppPages", async (IDbConnection conn) =>
+            app.MapGet("/apppages", async (IDbConnection conn) =>
             {
                 try
                 {
@@ -32,7 +32,7 @@ namespace UserControl
 
 
             // POST: create a new AppPage
-            app.MapPost("/AppPages", async (AppPage AppPage, IDbConnection db) =>
+            app.MapPost("/apppages", async (AppPage AppPage, IDbConnection db) =>
             {
                 try
                 {
@@ -48,7 +48,7 @@ namespace UserControl
             });
 
             // PUT: update AppPage name
-            app.MapPut("/AppPages/{id}", async (int id, AppPage input, IDbConnection db) =>
+            app.MapPut("/apppages/{id}", async (int id, AppPage input, IDbConnection db) =>
             {
                 try
                 {
@@ -69,7 +69,7 @@ namespace UserControl
             });
 
             // DELETE: remove AppPage
-            app.MapDelete("/AppPages/{id}", async (int id, IDbConnection db) =>
+            app.MapDelete("/apppages/{id}", async (int id, IDbConnection db) =>
             {
                 try
                 {
