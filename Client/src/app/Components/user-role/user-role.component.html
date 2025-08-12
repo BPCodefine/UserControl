@@ -1,0 +1,32 @@
+<dx-data-grid
+  [dataSource]="userRoles"
+  [showBorders]="true"
+
+  (onRowInserted)="onRoleInserted($event)"
+  (onRowUpdated)="onRoleUpdated($event)"
+  (onRowRemoved)="onRoleRemoved($event)"
+  >
+
+  <dxo-editing [allowUpdating]="true" [allowAdding]="true" [allowDeleting]="true" mode="row"></dxo-editing>
+  <dxo-filter-row [visible]=true></dxo-filter-row>
+  <dxo-header-filter [visible]=true></dxo-header-filter>
+  <dxo-search-panel [visible]="true" width="240" placeholder="Search"></dxo-search-panel>
+  <dxo-paging [enabled]="false"></dxo-paging>
+  <dxo-pager [visible]="true"></dxo-pager>
+
+  <dxi-column dataField="UserId" caption="User" >
+    <dxo-lookup
+      [dataSource]="user"
+      valueExpr="userId"
+      displayExpr="name">
+    </dxo-lookup>
+  </dxi-column>
+  <dxi-column dataField="RoleId" caption="Role">
+    <dxo-lookup
+      [dataSource]="role"
+      valueExpr="roleId"
+      displayExpr="roleName">
+    </dxo-lookup>
+  </dxi-column>
+</dx-data-grid>
+

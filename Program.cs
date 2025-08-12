@@ -25,6 +25,7 @@ app.UseCors("OpenPolicy");
 
 app.MapUserEndpoints();
 app.MapRoleEndpoints();
+app.MapUserRolesEndpoints();
 app.MapAppPageEndpoints();
 app.MapPermissionEndpoints();
 

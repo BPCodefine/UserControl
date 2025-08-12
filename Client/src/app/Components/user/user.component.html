@@ -1,28 +1,19 @@
 <dx-data-grid
   [dataSource]="users"
-  [editing]="{
-    mode: 'row',
-    allowUpdating: true,
-    allowAdding: true,
-    allowDeleting: true
-  }"
-
   [showBorders]="true"
+
   (onRowInserted)="onUserInserted($event)"
   (onRowUpdated)="onUserUpdated($event)"
   (onRowRemoved)="onUserRemoved($event)"
 >
+  <dxo-editing [allowUpdating]="true" [allowAdding]="true" [allowDeleting]="true" mode="row"></dxo-editing>
   <dxo-filter-row [visible]=true></dxo-filter-row>
   <dxo-header-filter [visible]=true></dxo-header-filter>
-  <dxo-search-panel
-    [visible]="true"
-    [width]="240"
-    placeholder="Search..."
-  ></dxo-search-panel>
+  <dxo-search-panel [visible]="true" width="240" placeholder="Search"></dxo-search-panel>
+  <dxo-paging [enabled]="false"></dxo-paging>
   <dxo-pager [visible]="true"></dxo-pager>
+
   <dxi-column dataField="userID" caption="ID" [allowEditing]="false"></dxi-column>
   <dxi-column dataField="name" caption="Name"></dxi-column>
   <dxi-column dataField="email" caption="Email"></dxi-column>
-
-  <dxo-paging [enabled]="false"></dxo-paging>
 </dx-data-grid>

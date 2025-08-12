@@ -44,13 +44,33 @@ namespace UserControl
                 }
             });
 
-            // PUT: update role name
-            app.MapPut("/roles/{id}", async (int id, Role input, IDbConnection db) =>
+            // PUT: update a user
+            app.MapPut("/users/{id}", async (IDbConnection conn, int id, User input) =>
             {
                 try
                 {
-                    var sql = "UPDATE [UserControl].dbo.Roles SET RoleName = @RoleName WHERE RoleId = @RoleId";
-                    var rows = await db.ExecuteAsync(sql, new { RoleId = id, input.RoleName });
+                    var rows = await conn.ExecuteAsync("UPDATE [UserControl].dbo.[Users] SET Email = @Email, Name = @Name WHERE UserId = @UserId", new
+                    {
+                        UserId = id,
+                        Email = input.Email,
+                        Name = input.Name
+                    });
+                    return rows == 0 ? Results.NotFound() : Results.Ok(input);
+                }
+                catch (Exception ex)
+                {
+                    return Results.Problem(ex.Message, statusCode: 500);
+                }
+            });
+
+            // PUT: update role name
+            app.MapPut("/roles/{id}", async (IDbConnection conn, int id, Role input) =>
+            {
+                try
+                {
+                    var rows = await conn.ExecuteAsync("UPDATE [UserControl].dbo.Roles SET RoleName = @RoleName WHERE RoleId = @RoleId", 
+                        new { RoleId = id, 
+                              RoleName = input.RoleName });
                     return rows == 0 ? Results.NotFound() : Results.Ok(input);
                 }
                 catch (Exception ex)

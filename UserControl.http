@@ -23,8 +23,6 @@ DELETE {{UserControl_HostAddress}}/users/{{UserID}}
 
 ###
 
-
-
 GET {{UserControl_HostAddress}}/roles
 ###
 
@@ -45,8 +43,6 @@ Content-Type: application/json
 DELETE {{UserControl_HostAddress}}/roles/{{RoleID}}
 
 ###
-
-
 
 GET {{UserControl_HostAddress}}/AppPages
 
@@ -73,8 +69,6 @@ Content-Type: application/json
 DELETE {{UserControl_HostAddress}}/AppPages/{{AppPageID}}
 
 ###
-
-
 
 GET {{UserControl_HostAddress}}/Permissions
 
@@ -104,5 +98,29 @@ Content-type: application/json
 ###
 
 DELETE {{UserControl_HostAddress}}/Permissions/{{PermID}}
+
+###
+
+GET {{UserControl_HostAddress}}/userroles
+
+###
+@newuserdId=5
+@newroleId=3
+POST {{UserControl_HostAddress}}/userroles?UserId={{newuserdId}}&RoleId={{newroleId}}
+###
+
+@olduserdId=5
+@oldroleId=3
+PUT {{UserControl_HostAddress}}/userroles?UserId={{olduserdId}}&RoleID={{oldroleId}}
+Content-type: application/json
+{
+  "UserId": 3,
+  "RoleId": 3
+}
+###
+
+@delUserID=3
+@delRoleID=3
+DELETE {{UserControl_HostAddress}}/userroles?UserId={{delUserID}}&RoleId={{delRoleID}}
 
 ###
